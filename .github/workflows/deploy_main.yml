@@ -16,6 +16,10 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Generate index.html
+        run: |
+          python scripts/generate_index.py
+          
       - name: Build Production Site
         run: |
           python scripts/build_site.py dist
