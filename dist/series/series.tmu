@@ -1,0 +1,77 @@
+<TMU|<tuple|1.0.5|1.2.9.5>>
+
+<style|<tuple|generic|chinese>>
+
+<\body>
+  <doc-data|<doc-title|差分法求多项式序列的部分和>|<doc-author|<author-data|<author-name|RoseL>>>>
+
+  设非零自然数 <math|n> 前面一个数是 <math|n<rprime|'>> ， <math|s<rsub|n>> 是一个序列， <math|<big|sum><rsub|k=n><rsup|m>s<rsub|k>> 就是它的部分和，满足：
+
+  <\equation>
+    <big|sum><rsub|k=0><rsup|0>s<rsub|k>=s<rsub|0>
+  </equation>
+
+  <\equation>
+    <big|sum><rsub|k=0><rsup|m>s<rsub|k>-<big|sum><rsub|k=0><rsup|m<rprime|'>>s<rsub|k>=<label|差分>s<rsub|m>
+  </equation>
+
+  <\equation>
+    <big|sum><rsub|k=0><rsup|m<rprime|'>>s<rsub|k>-<big|sum><rsub|k=0><rsup|n<rprime|'>>s<rsub|k>=<big|sum><rsub|k=n><rsup|m<rprime|'>>s<rsub|k>
+  </equation>
+
+  其中使用字母 <math|s> 暗示 series ，使用字母 <math|k> 暗示 counter 。求和下限与求和上限都是要能取到的。容易知道，如果给定求和下限和求和上限，那么部分和这个运算对被求和式是线性的。
+
+  首先，根据自然数的定义，我们容易知道
+
+  <\equation>
+    <big|sum><rsub|k=1><rsup|n>1=<label|常数>n
+  </equation>
+
+  即常数的部分和包括一次项。作为验算，我们求差分，将某项减去前面一项，知道 <math|n-n<rprime|'>=1> 。事实上差分就是部分和的一个逆运算，正如式 (<reference|差分>) 所示。
+
+  那么，为了猜测一次幂序列的部分和 ，首先对 <math|n<rsup|2>> 做差分，即 <math|n<rsup|2>-<around*|(|n<rprime|'>|)><rsup|2>=2*n-1> 。于是令 <math|t<rsub|1>=2*n-1> 使得 <math|n=<frac|1|2><around*|(|t<rsub|1>+1|)>> 以及 <math|<big|sum><rsub|k=1><rsup|n>t<rsub|1>=n<rsup|2>> ，再代入常数的部分和 (<reference|常数>) ，则有
+
+  <\equation>
+    <big|sum><rsub|k=1><rsup|n>k=<label|一次幂><frac|1|2>*<big|sum><rsub|k=1><rsup|n>t<rsub|1>+<frac|1|2>*<big|sum><rsub|k=1><rsup|n>1=<frac|1|2> n<rsup|2>+<frac|1|2>*n=<frac|n<around*|(|n+1|)>|2>
+  </equation>
+
+  进而猜测二次幂序列的部分和，首先对 <math|n<rsup|3>> 做差分，即 <math|n<rsup|3>-<around*|(|n<rprime|'>|)><rsup|3>=3*n<rsup|2>-3*n+1> 。于是令 <math|t<rsub|2>=3 n<rsup|2>-3 n+1> 使得 <math|n<rsup|2>=<frac|1|3><around*|(|t<rsub|2>+3*n-1|)>=<frac|1|6><around*|(|2*t<rsub|2>+3*t<rsub|1>+1|)>> 以及 <math|<big|sum><rsub|k=1><rsup|n>t<rsub|2>=n<rsup|3>> ，再代入一次幂与常数的部分和 (<reference|常数>, <reference|一次幂>) ，则有
+
+  <\equation>
+    <big|sum><rsub|k=1><rsup|n>k<rsup|2>=<frac|1|6> <around*|(|2*<big|sum><rsub|k=1><rsup|n>t<rsub|2>+3*<big|sum><rsub|k=1><rsup|n>t<rsub|1>+<big|sum><rsub|k=1><rsup|n>1|)>=<frac|1|3> n<rsup|3>+<frac|1|2> n<rsup|2>+<frac|1|6>*n=<frac|n<around*|(|n+1|)><around*|(|2*n+1|)>|6>
+  </equation>
+
+  这个方法是递归的，其正确性几乎完全寄托在二项式定理上，或者说，二项式定理使得 <math|m> 次幂的差分一定是 <math|m-1> 次多项式，进而 <math|m> 次多项式的部分和一定是 <math|m+1> 次多项式。用完全相同的方法可以求出立方序列部分和的表达式。
+
+  等比数列也可以这样考虑，先试探性地对 <math|q<rsup|n>> 做差分，摸到 <math|q<rsup|n>-q<rsup|n+1>=q<rsup|n>*<around*|(|1-q<rsup|\<nosymbol\>>|)>> ，这意味着
+
+  <\equation*>
+    q<rsup|0>=<big|sum><rsub|k=0<rsup|\<nosymbol\>>><rsup|n-1><around*|(|q<rsup|k>-q<rsup|k+1>|)>+q<rsup|n>=<big|sum><rsub|k=0<rsup|\<nosymbol\>>><rsup|n-1>q<rsup|k>*<around*|(|1-q<rsup|\<nosymbol\>>|)>+q<rsup|n>
+  </equation*>
+
+  <\equation>
+    <big|sum><rsub|k=0<rsup|\<nosymbol\>>><rsup|n-1>q<rsup|k>=<label|等比><frac|1-q<rsup|n>|1-q<rsup|\<nosymbol\>>>
+  </equation>
+
+  进而对于 <math|<around*|\||q|\|>\<less\>1> 的情形，即无穷递缩等比数列，因为 <math|q<rsup|n>\<rightarrow\>0> ，所以代入 (<reference|等比>) 算出如下的级数和
+
+  <\equation>
+    <big|sum><rsub|n=0<rsup|\<nosymbol\>>><rsup|\<infty\>>q<rsup|n>=<frac|1|1-q<rsup|\<nosymbol\>>>
+  </equation>
+</body>
+
+<\initial>
+  <\collection>
+    <associate|page-medium|paper>
+    <associate|page-screen-margin|false>
+  </collection>
+</initial>
+
+<\references>
+  <\collection>
+    <associate|一次幂|<tuple|5|1|..\\series.tmu>>
+    <associate|差分|<tuple|2|1|..\\series.tmu>>
+    <associate|常数|<tuple|4|1|..\\series.tmu>>
+    <associate|等比|<tuple|7|?|..\\series.tmu>>
+  </collection>
+</references>

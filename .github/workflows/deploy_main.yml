@@ -1,3 +1,4 @@
+#deploy_main.yml
 name: Deploy Main Branch
 on:
   push:
@@ -16,16 +17,20 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Generate index.html
-        run: |
-          python scripts/generate_index.py
-          
+      # 此步骤已由 build_site.py 包含，可以移除
+      # - name: Generate index.html
+      #   run: |
+      #     python scripts/generate_index.py
+
       - name: Build Production Site
         run: |
-          python scripts/build_site.py dist
+          python scripts/build_site.py dist # 这个脚本会调用 generate_index.py 并将输出重定向到 dist/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # 这里必须是 GH_PAT
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # 确保 GH_PAT 是正确设置的 Personal Access Token
           publish_dir: dist
+          # Optional: 如果你的 GitHub Pages 是从 main 分支的 /docs 目录部署，可以取消注释并修改
+          # publish_branch: main # 部署到 main 分支
+          # destination_dir: docs # 部署到 main 分支下的 docs 目录

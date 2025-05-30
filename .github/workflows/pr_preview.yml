@@ -1,6 +1,8 @@
+#pr_preview
 name: PR Preview Site
 on:
   pull_request:
+    # types: [opened, synchronize] # 可以更精确地指定触发 PR 的事件类型
     branches:
       - main
 
@@ -15,12 +17,15 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.x"
-          
-      - name: Generate index.html
-        run: |
-          python scripts/generate_index.py
-      - name: Install Dependencies
-        run: pip install --upgrade pip
+
+      # 此步骤已由 build_site.py 包含，可以移除
+      # - name: Generate index.html
+      #   run: |
+      #     python scripts/generate_index.py
+
+      # Install Dependencies 移到 Build 之前可能更合适，虽然这里没有 Python 依赖
+      - name: Install Dependencies # 如果你的 build_site.py 或 generate_index.py 有依赖，在这里安装
+        run: pip install --upgrade pip # 目前你的脚本没有外部依赖，此步骤可以省略或注释掉
 
       - name: Build Preview Site
         run: |
@@ -29,7 +34,8 @@ jobs:
       - name: Deploy to GitHub Pages (Preview)
         uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # 这里必须是 GH_PAT
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # 确保 GH_PAT 是正确设置的 Personal Access Token
           publish_dir: dist
-          destination_dir: pr/${{ github.event.pull_request.number }}
-          commit_message: "Deploy preview for PR #${{ github.event.pull_request.number }}"
+          destination_dir: pr/${{ github.event.pull_request.number }} # 这会在 gh-pages 分支下创建 pr/预览号 子目录
+          # commit_message: "Deploy preview for PR #${{ github.event.pull_request.number }}" # 默认 commit message 已经很好了，可以省略
+          # keep_files: true # 考虑是否要在关闭 PR 后保留预览，或者让 action 自动清理

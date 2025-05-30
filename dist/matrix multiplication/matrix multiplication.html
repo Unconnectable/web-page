@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>矩阵乘法的引入</title>
+    <meta name="generator" content="MoganSTEMSuite 1.2.9.7" />
+    <meta charset="UTF-8" />
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } math {
+      font-family: cmr, times, verdana } 
+    </style>
+    <script type="text/javascript">(function () {"use strict"; window.addEventListener("load",
+    function () { var box, div, link, namespaceURI; namespaceURI =
+    'http://www.w3.org/1998/Math/MathML'; if
+    (document.body.getElementsByTagNameNS(namespaceURI, 'math')[0]) {
+    document.body.insertAdjacentHTML('afterbegin', '<div style=\"border: 0;
+    clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding:
+    0; position: absolute; width: 1px;\"><math xmlns=\"' + namespaceURI +
+    '\"><mspace height=\"23px\" width=\"77px\"></mspace></math></div>'); div =
+    document.body.firstChild; box =
+    div.firstChild.firstChild.getBoundingClientRect();
+    document.body.removeChild(div); if (Math.abs(box.height - 23) > 1 ||
+    Math.abs(box.width - 77) > 1) { link = document.createElement('link');
+    link.href = 'https://fred-wang.github.io/mathml.css/mathml.css'; link.rel
+    = 'stylesheet'; document.head.appendChild(link); } } }); })();</script>
+  </head>
+  <body>
+    <script type="text/javascript"></script>
+    <script>document.querySelectorAll('style').forEach(style =>
+    style.remove());</script>
+    <table style="margin-bottom: 2em" class="title-block">
+      <tr>
+        <td><table style="margin-top: 0.5em; margin-bottom: 0.5em" class="title-block">
+          <tr>
+            <td><strong>矩阵乘法的引入</strong></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+    <div style="text-indent: 2em">
+      <p>
+        我们回顾：元素可以编成元组。一对相同长度的元组的对应元素的乘积的总和叫做元积。
+        
+      </p>
+      <center>
+        <p>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo
+          form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo form="prefix">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>ν</mi><mo
+          form="postfix">)</mo></mrow><mo>≔</mo><mi>a</mi><mo>&InvisibleTimes;</mo><mi>α</mi><mo>+</mo><mi>b</mi><mo>&InvisibleTimes;</mo><mi>β</mi><mo>+</mo><mi>⋯</mi><mo>+</mo><mi>n</mi><mo>&InvisibleTimes;</mo><mi>ν</mi></mrow></math>
+        </p>
+      </center>
+      <p>
+        可以定义加减乘除（除数非零）的元素叫做数，非零自然数
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math> 有唯一的前趋叫 <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mi>'</mi></msup></math>
+        。使得加减乘除封闭的数集、加法、乘法的编组叫做域
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix">(</mo><mi>F</mi><mo>,</mo><mo>+</mo><mo>,</mo><mo>×</mo><mo
+        form="postfix">)</mo></mrow></math>
+        。可以定义加法和数乘的元素叫做向量。使得加法和数乘封闭的向量集和数集、加法和数乘的编组叫做线空间
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix">(</mo><mi>L</mi><mo>,</mo><mo>+</mo><mo>,</mo><mo>×</mo><mo>,</mo><mi>F</mi><mo
+        form="postfix">)</mo></mrow></math>&#x3002;
+      </p>
+      <p>
+        给定线空间内的一个向量组 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Γ</mi></math>
+        ，若一个数组和 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Γ</mi></math>
+        的元积是零向量仅当数组是零组，则称 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Γ</mi></math>
+        是线无关组。向量最多的线无关组叫做线空间的基。取定一个基
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Ξ</mi></math>。线空间的任何向量 <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi></math>，都能用数组和基的元积 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>v</mi><mo>=</mo><mi>C</mi><mo>⋅</mo><mi>Ξ</mi></mrow></math>
+        来表示。这个数组 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math>
+        唯一存在，叫做向量 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi></math> 在基
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Ξ</mi></math> 下的坐标。
+      </p>
+      <p>
+        设 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>σ</mi></math> 为域 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math>
+        上的 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math> 维线空间 <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>L</mi><mn>1</mn></msub></math>
+        到域 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math> 上的 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math>
+        维线空间 <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>L</mi><mn>2</mn></msub></math>
+        的映射。如果 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mrow><mo form="prefix">(</mo><mi>α</mi><mo>+</mo><mi>β</mi><mo
+        form="postfix">)</mo></mrow><mo>=</mo><mi>σ</mi><mrow><mo form="prefix">(</mo><mi>α</mi><mo
+        form="postfix">)</mo></mrow><mo>+</mo><mi>σ</mi><mrow><mo form="prefix">(</mo><mi>β</mi><mo
+        form="postfix">)</mo></mrow></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mrow><mo
+        form="prefix">(</mo><mi>c</mi><mo>&InvisibleTimes;</mo><mi>α</mi><mo form="postfix">)</mo></mrow><mo>=</mo><mi>c</mi><mo>&InvisibleTimes;</mo><mi>σ</mi><mrow><mo
+        form="prefix">(</mo><mi>α</mi><mo form="postfix">)</mo></mrow></mrow></math> ，那么
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>σ</mi></math> 叫做线映射。
+      </p>
+    </div>
+    <p>
+      <hr>
+    </p>
+    <div style="text-indent: 2em">
+      <p>
+        设一个线映射 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϕ</mi></math>
+        ，在它的<b>定义域<class style="font-weight: normal">(domain)</class></b>内取一组基
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Δ</mi><mo>=</mo><mrow><mo form="prefix">(</mo><msub><mi>δ</mi><mn>0</mn></msub><mo>,</mo><msub><mi>δ</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>δ</mi><msup><mi>n</mi><mi>'</mi></msup></msub><mo
+        form="postfix">)</mo></mrow></mrow></math> ，<b>值域<class style="font-weight: normal">(range)</class></b>内取一组基
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Ζ</mi><mo>=</mo><mrow><mo form="prefix">(</mo><msub><mi>ζ</mi><mn>0</mn></msub><mo>,</mo><msub><mi>ζ</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>ζ</mi><msup><mi>m</mi><mi>'</mi></msup></msub><mo
+        form="postfix">)</mo></mrow></mrow></math> 。设数组 <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>k</mi></msub></math>
+        为 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mrow><mo form="prefix">(</mo><msub><mi>δ</mi><mi>k</mi></msub><mo
+        form="postfix">)</mo></mrow></mrow></math> 在 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Ζ</mi></math>
+        下的坐标，取遍 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math>
+        编成一个二维数组
+      </p>
+      <center>
+        <p>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mo>=</mo><mrow><mo form="prefix">(</mo><mrow><mo
+          form="prefix">(</mo><msub><mi>m</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msub><mo>,</mo><msub><mi>m</mi><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>m</mi><mrow><mn>0</mn><mo>,</mo><msup><mi>m</mi><mi>'</mi></msup></mrow></msub><mo
+          form="postfix">)</mo></mrow><mo>,</mo><mrow><mo form="prefix">(</mo><msub><mi>m</mi><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mo>,</mo><msub><mi>m</mi><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>m</mi><mrow><mn>1</mn><mo>,</mo><msup><mi>m</mi><mi>'</mi></msup></mrow></msub><mo
+          form="postfix">)</mo></mrow><mo>,</mo><mi>…</mi><mo>,</mo><mrow><mo form="prefix">(</mo><msub><mi>m</mi><mrow><msup><mi>n</mi><mi>'</mi></msup><mo>,</mo><mn>0</mn></mrow></msub><mo>,</mo><msub><mi>m</mi><mrow><msup><mi>n</mi><mi>'</mi></msup><mo>,</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>m</mi><mrow><msup><mi>n</mi><mi>'</mi></msup><mo>,</mo><msup><mi>m</mi><mi>'</mi></msup></mrow></msub><mo
+          form="postfix">)</mo></mrow><mo form="postfix">)</mo></mrow></mrow></math>
+        </p>
+      </center>
+      <p>
+        定义域内任取一个向量 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>v</mi><mo>=</mo><mi>C</mi><mo>⋅</mo><mi>Δ</mi></mrow></math>
+        。它的像 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mrow><mo>(</mo><mi>v</mi><mo>)</mo></mrow></mrow></math>
+        ，通过将 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi></math> 和各 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mrow><mo
+        form="prefix">(</mo><msub><mi>δ</mi><mi>k</mi></msub><mo form="postfix">)</mo></mrow></mrow></math>
+        用 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Δ</mi></math> 和 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Ζ</mi></math>
+        表示，得到
+      </p>
+      <center>
+        <p>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mrow><mo>(</mo><mi>v</mi><mo>)</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo
+          form="prefix">(</mo><msubsup><mo>&Sum;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>n</mi><mi>'</mi></msup></msubsup><msub><mi>c</mi><mi>k</mi></msub><mo>&InvisibleTimes;</mo><msub><mi>δ</mi><mi>k</mi></msub><mo
+          form="postfix">)</mo></mrow><mo>=</mo><msubsup><mo>&Sum;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>n</mi><mi>'</mi></msup></msubsup><msub><mi>c</mi><mi>k</mi></msub><mo>&InvisibleTimes;</mo><mi>ϕ</mi><mrow><mo>(</mo><msub><mi>δ</mi><mi>k</mi></msub><mo>)</mo></mrow><mo>=</mo><msubsup><mo>&Sum;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>n</mi><mi>'</mi></msup></msubsup><msub><mi>c</mi><mi>k</mi></msub><mo>&InvisibleTimes;</mo><mrow><mo
+          form="prefix">(</mo><msubsup><mo>&Sum;</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>m</mi><mi>'</mi></msup></msubsup><msub><mi>m</mi><mrow><mi>k</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>&InvisibleTimes;</mo><msub><mi>ζ</mi><mi>j</mi></msub><mo
+          form="postfix">)</mo></mrow></mrow></math>
+        </p>
+      </center>
+      <p>
+        然后交换求和顺序，事实上这也改变了遍历 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
+        的顺序。于是
+      </p>
+      <center>
+        <div style="text-indent: 0em">
+          <p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle displaystyle="true"><mrow><mi>ϕ</mi><mrow><mo>(</mo><mi>v</mi><mo>)</mo></mrow><mo>=</mo><mi>⋯</mi><mo>=</mo><munderover><mo>&Sum;</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>m</mi><mi>'</mi></msup></munderover><mrow><mo
+            form="prefix">(</mo><munderover><mo>&Sum;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>n</mi><mi>'</mi></msup></munderover><msub><mi>c</mi><mi>k</mi></msub><mo>&InvisibleTimes;</mo><msubsup><mi>m</mi><mrow><mi>k</mi><mo>,</mo><mi>j</mi></mrow><mi>​</mi></msubsup><mo
+            form="postfix">)</mo></mrow><mo>&InvisibleTimes;</mo><msub><mi>ζ</mi><mi>j</mi></msub></mrow></mstyle></math>
+          </p>
+        </div>
+      </center>
+      <p>
+        
+      </p>
+      <p>
+        我们说 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math> 是一个 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow></math>
+        级<b>矩阵<class style="font-weight: normal">(matrix)</class></b>，写成如下的数表，并称原二维数组为行向量组。
+        
+      </p>
+      <center>
+        <div style="text-indent: 0em">
+          <p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle displaystyle="false"><mrow><mo form="prefix">(</mo><mtable
+            columnalign="center center center center">
+              <mtr>
+                <mtd><msub><mi>m</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msub></mtd>
+                <mtd><msub><mi>m</mi><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow></msub></mtd>
+                <mtd><mi>⋯</mi></mtd>
+                <mtd><msub><mi>m</mi><mrow><mn>0</mn><mo>,</mo><msup><mi>m</mi><mi>'</mi></msup></mrow></msub></mtd>
+              </mtr>
+              <mtr>
+                <mtd><msub><mi>m</mi><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub></mtd>
+                <mtd><msub><mi>m</mi><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub></mtd>
+                <mtd><mi>⋯</mi></mtd>
+                <mtd><msub><mi>m</mi><mrow><mn>1</mn><mo>,</mo><msup><mi>m</mi><mi>'</mi></msup></mrow></msub></mtd>
+              </mtr>
+              <mtr>
+                <mtd><mi>⋮</mi></mtd>
+                <mtd><mi>⋮</mi></mtd>
+                <mtd><mrow></mrow></mtd>
+                <mtd><mi>⋮</mi></mtd>
+              </mtr>
+              <mtr>
+                <mtd><msub><mi>m</mi><mrow><msup><mi>n</mi><mi>'</mi></msup><mo>,</mo><mn>0</mn></mrow></msub></mtd>
+                <mtd><msub><mi>m</mi><mrow><msup><mi>n</mi><mi>'</mi></msup><mo>,</mo><mn>1</mn></mrow></msub></mtd>
+                <mtd><mi>⋯</mi></mtd>
+                <mtd><msub><mi>m</mi><mrow><msup><mi>n</mi><mi>'</mi></msup><mo>,</mo><msup><mi>m</mi><mi>'</mi></msup></mrow></msub></mtd>
+              </mtr>
+            </mtable><mo form="postfix">)</mo></mrow></mstyle></math>
+          </p>
+        </div>
+      </center>
+      <p>
+        记 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math> 的各元素为 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo></mrow></math><math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>m</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow><mi>T</mi></msubsup></math>
+        ，各行为 <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>i</mi></msub></math>
+        ，各列为 <math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>M</mi><mi>j</mi><mi>T</mi></msubsup></math>
+        ，<b>转置<class style="font-weight: normal">(transpose)</class></b>为 <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>M</mi><mi>T</mi></msup></math>
+        。上式中出现的由 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mo>&Sum;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>n</mi><mi>'</mi></msup></msubsup><msub><mi>c</mi><mi>k</mi></msub><mo>&InvisibleTimes;</mo><msubsup><mi>m</mi><mrow><mi>k</mi><mo>,</mo><mi>j</mi></mrow><mi>​</mi></msubsup></mrow></math>
+        取遍 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>j</mi></math> 编成的数组 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo
+        form="prefix">(</mo><mi>C</mi><mo>⋅</mo><msubsup><mi>M</mi><mn>0</mn><mi>T</mi></msubsup><mo>,</mo><mi>C</mi><mo>⋅</mo><msubsup><mi>M</mi><mn>1</mn><mi>T</mi></msubsup><mo>,</mo><mi>…</mi><mo>&InvisibleTimes;</mo><mi>C</mi><mo>⋅</mo><msubsup><mi>M</mi><msup><mi>n</mi><mi>'</mi></msup><mi>T</mi></msubsup><mo
+        form="postfix">)</mo></mrow></math> 记作 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>×</mo><mi>M</mi></mrow></math>
+        ，使前面的表示式又写成 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mrow><mo
+        form="prefix">(</mo><mi>v</mi><mo form="postfix">)</mo></mrow><mo>=</mo><mrow><mo form="prefix">(</mo><mi>C</mi><mo>×</mo><mi>M</mi><mo
+        form="postfix">)</mo></mrow><mo>⋅</mo><mi>Ζ</mi></mrow></math> &#x3002;
+      </p>
+      <p>
+        考虑向量组，将各向量的像也编成向量组，各数组相应编成二维数组，使得
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mrow><mo form="prefix">(</mo><mi>V</mi><mo
+        form="postfix">)</mo></mrow><mo>=</mo><mi>C</mi><mo>×</mo><mrow><mo form="prefix">(</mo><mi>M</mi><mo>×</mo><msup><mi>Ζ</mi><mi>T</mi></msup><mo
+        form="postfix">)</mo></mrow><mo>=</mo><mrow><mo form="prefix">(</mo><mi>C</mi><mo>×</mo><mi>M</mi><mo
+        form="postfix">)</mo></mrow><mo>×</mo><msup><mi>Ζ</mi><mi>T</mi></msup></mrow></math>，那么把
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>×</mo><mi>M</mi></mrow></math>
+        叫做矩阵乘法。把 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
+        叫做线映射 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϕ</mi></math> 在基 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Δ</mi></math>
+        和 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Ζ</mi></math>
+        下的表示阵，那复合映射的表示阵理所当然是各映射表示阵的乘积，而且
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∘</mo><msub><mi>ϕ</mi><mn>1</mn></msub></mrow></math>
+        的表示矩阵是 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>M</mi><mn>1</mn></msub><mo>×</mo><msub><mi>M</mi><mn>2</mn></msub></mrow></math>
+        。这是前缀表达式所致复合运算符号的右结合性导致的。如果是后缀表达式则会流畅许多。
+      </p>
+      <p>
+        一个 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>×</mo><mi>r</mi></mrow></math>
+        级矩阵 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math> 和一个 <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>r</mi><mo>×</mo><mi>m</mi></mrow></math>
+        级矩阵 <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math> 的乘积是一个 <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow></math> 级矩阵
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>=</mo><mi>A</mi><mo>×</mo><mi>B</mi></mrow></math>
+        ，使得 
+      </p>
+      <center>
+        <div style="text-indent: 0em">
+          <p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>c</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo><msubsup><mo>&Sum;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><msup><mi>r</mi><mi>'</mi></msup></msubsup><msub><mi>a</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi></mrow></msub><mo>&InvisibleTimes;</mo><msubsup><mi>b</mi><mrow><mi>k</mi><mo>,</mo><mi>j</mi></mrow><mi>​</mi></msubsup><mo>=</mo><msub><mi>A</mi><mi>i</mi></msub><mo>⋅</mo><msubsup><mi>B</mi><mi>j</mi><mi>T</mi></msubsup></mrow></math>
+          </p>
+        </div>
+      </center>
+    </div>
+  </body>
+</html>
