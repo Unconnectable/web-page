@@ -1,0 +1,215 @@
+<TMU|<tuple|1.0.5|1.2.9.5>>
+
+<style|<tuple|generic|chinese|framed-theorems>>
+
+<\body>
+  <doc-data|<doc-title|外积、线性变换的定准，以及行列式>|<doc-author|<author-data|<author-name|RoseL>>>>
+
+  我们或许曾经介绍过元积 <math|<around*|(|a<rsub|0>,\<ldots\>,a<rsub|n<rprime|'>>|)> <around*|(|b<rsub|0>,\<ldots\>,b<rsub|n<rprime|'>>|)>=a<rsub|0>*b<rsub|0>+\<cdots\>+a<rsub|n<rprime|'>>*b<rsub|n<rprime|'>>> （也介绍过，自然数的导元 <math|n<rprime|'>> 是指它前面一个数），并用它介绍过线性无关向量组所张成的线空间，以及该空间中任何向量的坐标表示。现在，我们讨论如下这种运算，它叫做外积：
+
+  当它写成二元运算 <math|v\<exterior\>u> 的形式时，满足
+
+  <\itemize-dot>
+    <item>左线性律 <math|<around*|(|a*u+v|)>\<exterior\>w=a<around*|(|u\<exterior\>w|)>+v\<exterior\>w> ；
+
+    <item>反交换律 <math|v\<exterior\>u=-u\<exterior\>v> ；
+
+    <item>结合律 <math|u\<exterior\><around*|(|v\<exterior\>w|)>=<around*|(|u\<exterior\>v|)>\<exterior\>w>。
+  </itemize-dot>
+
+  至于外积到底算出了什么、怎么表示，这不在本文探讨范围内。
+
+  <\theorem>
+    <label|线性律>线性律可以生效于 <math|n> 元外积式的任意一元上，即
+
+    <\equation*>
+      <with|color|dark grey|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|<around*|(|k*p+q|)>>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>><with|color|black|=><with|color|black|k>*<around*|(|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|p>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>|)><with|color|black|+>v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|q>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>
+    </equation*>
+  </theorem>
+
+  <\proof>
+    利用结合律，将不含 <math|p,q> 的部分记作表达式 <math|A,B> 并甩到后面，使左边完成关键的展开。
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|>|<cell|>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><around*|(|c*p+q|)>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>|<row|<cell|<around*|(|代换|)>>|<cell|=>|<cell|<around*|(|A\<exterior\><around*|(|c*p+q|)>|)>\<exterior\>B>>|<row|<cell|<around*|(|反交换律|)>>|<cell|=>|<cell|<around*|(|-<around*|(|c*p+q|)>\<exterior\>A|)>\<exterior\>B>>|<row|<cell|<around*|(|线性|)>>|<cell|=>|<cell|-c*<around*|(|<around*|(|p\<exterior\>A|)>\<exterior\>B|)>-<around*|(|q\<exterior\>A|)>\<exterior\>B>>|<row|<cell|<around*|(|反交换律|)>>|<cell|=>|<cell|c*<around*|(|<around*|(|A\<exterior\>p|)>\<exterior\>B|)>+<around*|(|<around*|(|A\<exterior\>q|)>\<exterior\>B|)>>>|<row|<cell|<around*|(|反代换|)>>|<cell|=>|<cell|c*<around*|(|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>|)>+v<rsub|0>\<exterior\>\<cdots\>\<exterior\>q\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>>>
+    </eqnarray*>
+
+    \;
+  </proof>
+
+  <\note*>
+    结合律的重要性就在于使表达式变形不需要像冒泡一样逐一交换，可以直接到达指定位置。
+  </note*>
+
+  <\notation>
+    <label|伸缩>记将第 <math|i> 元乘到 <math|k> 倍为伸缩变换 <math|D<rsub|i<around*|(|k|)>>> 。设向量组 <math|V=<around*|(|v<rsub|0>,\<ldots\>,v<rsub|n<rprime|'>>|)>> ，那么
+
+    <\equation*>
+      <tabular|<tformat|<table|<row|<cell|<big|wedge>D<rsub|i<around*|(|k|)>>*V>|<cell|=>|<cell|k*<big|wedge>V>>>>>
+    </equation*>
+  </notation>
+
+  <\theorem>
+    <label|反交换律>反交换律可以生效于 <math|n> 元外积式的任意两元上，即
+
+    <\equation*>
+      <with|color|dark grey|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|p>\<exterior\>\<cdots\>\<exterior\><with|color|black|q>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>><with|color|black|=><with|color|black|->v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|q>\<exterior\>\<cdots\>\<exterior\><with|color|black|p>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>
+    </equation*>
+  </theorem>
+
+  <\proof>
+    利用结合律，将不含 <math|p,q> 的部分记作表达式 <math|A,B,C> ，把它们甩到后面，使左边完成关键的交换，使得所有的反交换律都能配合左线性律使用来提取负号。
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|>|<cell|>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>q\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>|<row|<cell|<around*|(|代换|)>>|<cell|=>|<cell|<around*|(|<around*|(|<around*|(|A\<exterior\>p|)>\<exterior\>B|)>\<exterior\>q|)>\<exterior\>C>>|<row|<cell|<around*|(|反交换律\<times\>2|)>>|<cell|=>|<cell|<around*|(|q\<exterior\><around*|(|<around*|(|p\<exterior\>A|)>\<exterior\>B|)>|)>\<exterior\>C>>|<row|<cell|<around*|(|结合律\<times\>2|)>>|<cell|=>|<cell|<around*|(|<around*|(|<around*|(|q\<exterior\>p|)>\<exterior\>A|)>\<exterior\>B|)>\<exterior\>C>>|<row|<cell|*\<star\> <around*|(|反交换律|)>>|<cell|=>|<cell|-<around*|(|<around*|(|<around*|(|p\<exterior\>q|)>\<exterior\>A|)>\<exterior\>B|)>\<exterior\>C>>|<row|<cell|<around*|(|结合律\<times\>2|)>>|<cell|=>|<cell|-<around*|(|p\<exterior\><around*|(|<around*|(|q\<exterior\>A|)>\<exterior\>B|)>|)>\<exterior\>C>>|<row|<cell|<around*|(|反交换律\<times\>2|)>>|<cell|=>|<cell|-<around*|(|<around*|(|<around*|(|A\<exterior\>q|)>\<exterior\>B|)>\<exterior\>p|)>\<exterior\>C>>|<row|<cell|<around*|(|反代换|)>>|<cell|=>|<cell|-v<rsub|0>\<exterior\>\<cdots\>\<exterior\>q\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>>>
+    </eqnarray*>
+
+    \;
+  </proof>
+
+  <\note*>
+    请一定要记住，代换前的结构按照KISS (keep it simple straightforward) 原则设计，最简单直接的那个其实就是最好用的。这里也可以用结合律把表达式代换成 <math|A\<exterior\><around*|(|<around*|(|p\<exterior\><around*|(|B\<exterior\>q|)>|)>\<exterior\>C|)>>，看上去好像只需要把最内层和最外层的表达式甩到后面挺方便，但如果线性律只有左边能用，就反而导致负号不太方便处理。
+  </note*>
+
+  <\notation>
+    <label|镜像>记将向量组的第 <math|i,j> 两元对换为镜像变换 <math|P<rsub|i,j>> 。设向量组 <math|V=<around*|(|v<rsub|0>,\<ldots\>,v<rsub|n<rprime|'>>|)>> ，那么
+
+    <\equation*>
+      <tabular|<tformat|<table|<row|<cell|<big|wedge>P<rsub|i,j>*V>|<cell|=>|<cell|-<big|wedge>V>>>>>
+    </equation*>
+  </notation>
+
+  <\corollary>
+    <label|示零性>外积还具有示零性。<math|n> 元外积式中只要有一元为零，或有两元相同，则结果为零。
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>0\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>|<cell|=>|<cell|0>>|<row|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|p>\<exterior\>\<cdots\>\<exterior\><with|color|black|p>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>|<cell|=>|<cell|0>>>>
+    </eqnarray*>
+  </corollary>
+
+  <\proof>
+    对零元取负并把负号提出，得
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|X<rsub|0>>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><around*|(|-0|)>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>|<row|<cell|>|<cell|=>|<cell|-<around*|(|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>0\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>|)>=-X<rsub|0>>>>>
+    </eqnarray*>
+
+    <math|X<rsub|0>=-X<rsub|0>> ，结果只能是 <math|X<rsub|0>=0> 。
+
+    把相等元素交换以凭空产生负号，得
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|X<rsub|p p>>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>|<row|<cell|>|<cell|=>|<cell|-<around*|(|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>p\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>|)>=-X<rsub|p p>>>>>
+    </eqnarray*>
+
+    <math|X<rsub|p p>=-X<rsub|p p>> ，结果只能是 <math|X<rsub|p p>=0> 。
+  </proof>
+
+  <\note*>
+    两元相同的示零和两元对换的变号是等价的。我们都知道，交换两个变量的值可以通过这样的算法：`a=a+b; b=-b+a; a=a-b`。已知示零性就可以实现的过程，叫做错切，比如
+
+    <\equation*>
+      p\<exterior\>q=<around*|(|p+q|)>\<exterior\>q=-<around*|(|p+q|)>\<exterior\>p=-q\<exterior\>p
+    </equation*>
+  </note*>
+
+  <\theorem>
+    <label|错切>记将第 <math|i> 元上加入第 <math|j> 元的 <math|k> 倍为错切变换 <math|E<rsub|i,j<around*|(|k|)>>> 。设向量组 <math|V=<around*|(|v<rsub|0>,\<ldots\>,v<rsub|n<rprime|'>>|)>> ，那么
+
+    <\equation*>
+      <tabular|<tformat|<table|<row|<cell|<big|wedge>E<rsub|i,j<around*|(|k|)>>*V>|<cell|=>|<cell|<big|wedge>V>>>>>
+    </equation*>
+  </theorem>
+
+  <\proof>
+    由示零性，
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|wedge>E<rsub|i,j<around*|(|k|)>>*V>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><around*|(|<with|color|black|v<rsub|i>>+k*v<rsub|j>|)>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|j>>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>>>|<row|<cell|>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|i>>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|j>>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>+k*<around*|(|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|j>>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|j>>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>|)>>>|<row|<cell|>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|i>>\<exterior\>\<cdots\>\<exterior\><with|color|black|v<rsub|j>>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|'>>+0=<big|wedge>V>>>>
+    </eqnarray*>
+
+    \;
+  </proof>
+
+  <\definition>
+    初等变换只有伸缩、镜像、错切三种。
+
+    对一组向量做初等变换前后，总外积是共线的。比例系数和这个向量组的具体取值无关，而是由初等变换本身确定的。于是比例系数称为初等变换的<with|font-series|bold|定准>，有
+
+    <\equation*>
+      <space|2em><around*|\||D<rsub|i<around*|(|k|)>>|\|>=k<space|2em> <around*|\||P<rsub|i,j>|\|>=-1<space|2em><around*|\||E<rsub|i,j<around*|(|k|)>>|\|>=1
+    </equation*>
+
+    <math|>我们十分清楚线性映射和矩阵是同构的，那么高斯消元法暗示，任何线性变换总能表示为一系列初等变换的接连作用。把这些初等变换的定准连乘起来，就是线性变换的定准。
+
+    把线性变换的方阵表示两边的框线改写成竖线，让它成为一个算式，叫做行列式。行列式的值就是这个线性变换或这个矩阵的定准。
+  </definition>
+
+  <\corollary>
+    上三角行列式和下三角行列式的值为其主对角线元素的总乘积。
+  </corollary>
+
+  <\corollary>
+    非零 <math|n> 元组线性相关，则它们的总外积为零。
+  </corollary>
+
+  <\proof>
+    设向量组 <math|V=<around*|(|v<rsub|0>,\<ldots\>,v<rsub|n<rprime|'>>|)>> 线性相关，则存在一组数 <math|<around*|(|c<rsub|0>,\<ldots\>,c<rsub|n<rprime|''>>|)>> 使得
+
+    <\equation*>
+      v<rsub|n<rprime|'>>=<big|sum><rsub|i=0><rsup|n<rprime|''>>c<rsub|i>*v<rsub|i>
+    </equation*>
+
+    于是
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|wedge>V>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>v<rsub|n-2>\<exterior\>v<rsub|n<rprime|'>>>>|<row|<cell|>|<cell|=>|<cell|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>v<rsub|n-2>\<exterior\><big|sum><rsub|i=0><rsup|n<rprime|''>>c<rsub|i>*v<rsub|i>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|i=0><rsup|n<rprime|''>>c<rsub|i>*<around*|(|v<rsub|0>\<exterior\>\<cdots\>\<exterior\>v<rsub|n<rprime|''>>\<exterior\>v<rsub|i>|)>=0>>>>
+    </eqnarray*>
+
+    \;
+  </proof>
+
+  <\algorithm>
+    将一组自然数 <math|<around*|(|0,\<ldots\>,n<rprime|'>|)>> 数次任选两个数交换位置，得到排列 <math|<around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>> ，可以包括冗余的交换。如果交换的次数是奇数，那么记 <math|\<delta\><around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>=-1> ，否则交换的次数是偶数，记 <math|\<delta\><around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>=1> 。
+
+    于是设一个 <math|n> 维线性空间 <math|U> 上有一个线性变换 <math|T> ，它将这个线性空间上的一组基 <math|\<Xi\>=<around*|(|\<xi\><rsub|0>,\<ldots\>,\<xi\><rsub|n<rprime|'>>|)>> 的各向量映射为 <math|T<around*|[|\<Xi\>|]>=<around*|(|T<around*|(|\<xi\><rsub|0>|)>,\<ldots\>,T<around*|(|\<xi\><rsub|n<rprime|'>>|)>|)>> 。但因为 <math|\<Xi\>> 是基，所以 <math|U> 中的向量 <math|T<around*|(|\<xi\><rsub|i>|)>> 一定能用 <math|\<Xi\>> 线性表示，坐标分别是 <math|C<rsub|i>> 。
+
+    让 <math|n> 个计数变量同时在这组自然数上遍历。这些变量一旦有两个取到相同值，那么它们指到的向量的总外积 <math|<around*|(|\<xi\><rsub|i<rsub|0>>\<exterior\>\<cdots\>\<exterior\>\<xi\><rsub|i<rsub|n<rprime|'>>>|)>> 就会示零。不示零，就需要这些计数变量不重复地取遍这组自然数，但这组计数变量和这组数一样多，于是不重不漏，得到一个排列。所有可能的不示零项正是通过这么遍历全排列来枚举的，然后发现它们共线。
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|wedge>T<around*|[|\<Xi\>|]><em|>>|<cell|=>|<cell|T<around*|(|\<xi\><rsub|0>|)>\<exterior\>\<cdots\>\<exterior\>T<around*|(|\<xi\><rsub|n<rprime|'>>|)>>>|<row|<cell|<around*|(|坐标表示|)>>|<cell|=>|<cell|<around*|(|C<rsub|0>*\<Xi\>|)>\<exterior\>\<cdots\>\<exterior\><around*|(|C<rsub|n<rprime|'>>*\<Xi\>|)>>>|<row|<cell|<around*|(|线性展开|)>>|<cell|=>|<cell|<big|sum><rsup|n<rprime|'>><rsub|i<rsub|0>=0>\<cdots\>*<big|sum><rsup|n<rprime|'>><rsub|i<rsub|n<rprime|'>>=0><around*|(|C<rsub|0,i<rsub|0>>*\<cdots\> C<rsub|n<rprime|'>,i<rsub|n<rprime|'>>>|)>*<around*|(|\<xi\><rsub|i<rsub|0>>\<exterior\>\<cdots\>\<exterior\>\<xi\><rsub|i<rsub|n<rprime|'>>>|)>>>|<row|<cell|<around*|(|识别示零|)>>|<cell|=>|<cell|<big|sum><rsub|<around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>><around*|(|C<rsub|0,i<rsub|0>>*\<cdots\> C<rsub|n<rprime|'>,i<rsub|n<rprime|'>>>|)>*<around*|(|\<xi\><rsub|i<rsub|0>>\<exterior\>\<cdots\>\<exterior\>\<xi\><rsub|i<rsub|n<rprime|'>>>|)>+0+\<cdots\>+0>>|<row|<cell|<around*|(|识别交换|)>>|<cell|=>|<cell|<big|sum><rsub|<around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>><around*|(|C<rsub|0,i<rsub|0>>*\<cdots\> C<rsub|n<rprime|'>,i<rsub|n<rprime|'>>>|)>*\<delta\><around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>*<around*|(|\<xi\><rsub|0>\<exterior\>\<cdots\>\<exterior\>\<xi\><rsub|n<rprime|'>>|)>>>|<row|<cell|<around*|(|提取单位|)>>|<cell|=>|<cell|<around*|(|<big|sum><rsub|<around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>><around*|(|C<rsub|0,i<rsub|0>>*\<cdots\> C<rsub|n<rprime|'>,i<rsub|n<rprime|'>>>|)>*\<delta\><around*|(|i<rsub|0>,\<ldots\>,i<rsub|n<rprime|'>>|)>|)>*<around*|(|\<xi\><rsub|0>\<exterior\>\<cdots\>\<exterior\>\<xi\><rsub|n<rprime|'>>|)>>>>>
+    </eqnarray*>
+  </algorithm>
+
+  这个算法本身并不重要，也绝不实用，却是以一种独立的方法知道，对一组向量做线性变换前后，外积是共线的，比例系数就是线性变换的定准，有 <math|<big|wedge>T<around*|[|\<Xi\>|]>=<around*|\||T|\|>*<big|wedge>\<Xi\>> 。
+
+  下面略写：
+
+  因为对非全序元素的单竖线括号表示了定准而非绝对值，而定准的绝对值确实常用，所以把绝对值的概念推广到非全序元素而成为范数时，采取双竖线括号 <math|<around|\<\|\|\>|v|\<\|\|\>>> 。
+
+  定理：Hadamard不等式。\|\|v1, v2<text-dots>vn\|\|\<less\>=\|\|v1\|\|\|\|v2\|\|<text-dots>\|\|vn\|\| ，证明可以考虑特征值方法。
+
+  相当重要的两个结论是矩阵定准的转置不变性和矩阵乘法与定准的协调。
+
+  后面还要写按行展开和Laplace多行展开定理。不过关键是怎么定义子式和余子式。或许这些方面就只能以比较纯粹的矩阵视角来解读了。
+
+  线性变换的定准的一个重要的终端应用是外微分形式的换元公式，在这之中用到了雅可比定准。
+</body>
+
+<\initial>
+  <\collection>
+    <associate|page-medium|paper>
+    <associate|page-screen-margin|false>
+  </collection>
+</initial>
+
+<\references>
+  <\collection>
+    <associate|伸缩|<tuple|2|1>>
+    <associate|反交换律|<tuple|3|1>>
+    <associate|示零性|<tuple|5|2>>
+    <associate|线性律|<tuple|1|1>>
+    <associate|错切|<tuple|6|3>>
+    <associate|镜像|<tuple|4|2>>
+  </collection>
+</references>
