@@ -18,12 +18,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      # 此步骤已由 build_site.py 包含，可以移除
-      # - name: Generate index.html
-      #   run: |
-      #     python scripts/generate_index.py
 
-      # Install Dependencies 移到 Build 之前可能更合适，虽然这里没有 Python 依赖
       - name: Install Dependencies # 如果你的 build_site.py 或 generate_index.py 有依赖，在这里安装
         run: pip install --upgrade pip # 目前你的脚本没有外部依赖，此步骤可以省略或注释掉
 
