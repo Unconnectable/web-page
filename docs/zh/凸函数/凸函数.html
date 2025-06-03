@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>凸函数</title>
+    <meta name="generator" content="MoganSTEMSuite 1.2.9.7" />
+    <meta charset="UTF-8" />
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } math {
+      font-family: cmr, times, verdana } 
+    </style>
+    <script type="text/javascript">(function () {"use strict"; window.addEventListener("load",
+    function () { var box, div, link, namespaceURI; namespaceURI =
+    'http://www.w3.org/1998/Math/MathML'; if
+    (document.body.getElementsByTagNameNS(namespaceURI, 'math')[0]) {
+    document.body.insertAdjacentHTML('afterbegin', '<div style=\"border: 0;
+    clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding:
+    0; position: absolute; width: 1px;\"><math xmlns=\"' + namespaceURI +
+    '\"><mspace height=\"23px\" width=\"77px\"></mspace></math></div>'); div =
+    document.body.firstChild; box =
+    div.firstChild.firstChild.getBoundingClientRect();
+    document.body.removeChild(div); if (Math.abs(box.height - 23) > 1 ||
+    Math.abs(box.width - 77) > 1) { link = document.createElement('link');
+    link.href = 'https://fred-wang.github.io/mathml.css/mathml.css'; link.rel
+    = 'stylesheet'; document.head.appendChild(link); } } }); })();</script>
+  </head>
+  <body>
+    <script type="text/javascript"></script>
+    <script>document.querySelectorAll('style').forEach(style =>
+    style.remove());</script>
+    <table style="margin-bottom: 2em" class="title-block">
+      <tr>
+        <td><table style="margin-top: 0.5em; margin-bottom: 0.5em" class="title-block">
+          <tr>
+            <td><strong>凸函数</strong></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+    <p style="margin-top: 1em">
+      <strong>定义 <class style="font-style: normal">1</class>. </strong><a id="dfn:convex function"></a>设<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>为区间<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi></math>上的实函数.
+      如果对任何<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>∈</mo><mi>I</mi></mrow></math>，以及任意的<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>λ</mi><mo>∈</mo><mrow><mo form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo
+      form="postfix">]</mo></mrow></mrow></math>，<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>都满足不等式
+    </p>
+    <table width="100%">
+      <tr>
+        <td align="center" width="100%"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle displaystyle="true"><mrow><mi>f</mi><mrow><mo
+        form="prefix">(</mo><mi>λ</mi><mo>&InvisibleTimes;</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mrow><mo
+        form="prefix">(</mo><mn>1</mn><mo>-</mo><mi>λ</mi><mo form="postfix">)</mo></mrow><mo>&InvisibleTimes;</mo><msub><mi>x</mi><mn>2</mn></msub><mo
+        form="postfix">)</mo></mrow><mo>⩽</mo><mi>λ</mi><mo>&InvisibleTimes;</mo><mi>f</mi><mrow><mo
+        form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix">)</mo></mrow><mo>+</mo><mrow><mo
+        form="prefix">(</mo><mn>1</mn><mo>-</mo><mi>λ</mi><mo form="postfix">)</mo></mrow><mo>&InvisibleTimes;</mo><mi>f</mi><mrow><mo
+        form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix">)</mo></mrow><mo>,</mo></mrow></mstyle></math></td>
+        <td align="right">(1)</td>
+      </tr>
+    </table>
+    <p>
+      则称<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>为<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi></math>上的<dfn>凸函数</dfn>.
+    </p>
+    <p style="margin-bottom: 1em">
+      如果上述不等式对任何不相等的<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>∈</mo><mi>I</mi></mrow></math>及<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>λ</mi><mo>∈</mo><mrow><mo form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo
+      form="postfix">]</mo></mrow></mrow></math>不等号总成立，我们就说<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>在<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi></math>上是<dfn>严格凸函数</dfn>.
+    </p>
+    <p style="margin-top: 1em">
+      <strong>注意 <class style="font-style: normal">2</class>. </strong>有些文献（如[<a
+      href="#bib-常庚哲2012数学分析教程">1</a>, 定义3.5.1]）会忽略条件<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>和<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>λ</mi><mo>=</mo><mn>0</mn></mrow></math>或<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>λ</mi><mo>=</mo><mn>1</mn></mrow></math>，因为在此时不等式(<a
+      href="#ineq:Jensen">1</a>)总成立.
+      因此我们可以给出凸函数如下等价定义：
+    </p>
+    <p>
+      设<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>为区间<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi></math>上的实函数.
+      如果对任何不相等的<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>∈</mo><mi>I</mi></mrow></math>，以及任意的<math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>λ</mi><mo>∈</mo><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo
+      form="postfix">)</mo></mrow></mrow></math>，<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>都满足不等式
+    </p>
+    <center>
+      <math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle displaystyle="true"><mrow><mi>f</mi><mrow><mo form="prefix">(</mo><mi>λ</mi><mo>&InvisibleTimes;</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mrow><mo
+      form="prefix">(</mo><mn>1</mn><mo>-</mo><mi>λ</mi><mo form="postfix">)</mo></mrow><mo>&InvisibleTimes;</mo><msub><mi>x</mi><mn>2</mn></msub><mo
+      form="postfix">)</mo></mrow><mo>⩽</mo><mi>λ</mi><mo>&InvisibleTimes;</mo><mi>f</mi><mrow><mo
+      form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix">)</mo></mrow><mo>+</mo><mrow><mo
+      form="prefix">(</mo><mn>1</mn><mo>-</mo><mi>λ</mi><mo form="postfix">)</mo></mrow><mo>&InvisibleTimes;</mo><mi>f</mi><mrow><mo
+      form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix">)</mo></mrow><mo>,</mo></mrow></mstyle></math>
+    </center>
+    <p style="margin-bottom: 1em">
+      则称<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math>为<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi></math>上的<dfn>凸函数</dfn>.
+    </p>
+    <h2 id="auto-1">参考文献<span style="margin-left: 1em"></span></h2>
+    <div class="compact-block" style="text-indent: 0em">
+      <dl>
+        <p>
+          <dt>
+            <strong>[1]  </strong>
+          </dt>
+          <dd>
+            <p>
+              <a id="bib-常庚哲2012数学分析教程"></a>常庚哲 与 史济怀.
+              <i>数学分析教程.上册</i>, 卷 .
+              中国科学技术大学出版社, 合肥, 3 版本, 8 2012.
+            </p>
+          </dd>
+        </p>
+      </dl>
+    </div>
+  </body>
+</html>

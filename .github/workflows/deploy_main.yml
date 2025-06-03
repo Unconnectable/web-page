@@ -17,11 +17,6 @@ jobs:
         with:
           python-version: "3.x"
 
-      # 此步骤已由 build_site.py 包含，可以移除
-      # - name: Generate index.html
-      #   run: |
-      #     python scripts/generate_index.py
-
       - name: Build Production Site
         run: |
           python scripts/build_site.py dist # 这个脚本会调用 generate_index.py 并将输出重定向到 dist/index.html
