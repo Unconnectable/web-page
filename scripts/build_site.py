@@ -28,37 +28,41 @@ def build_site(output_dir):
         shutil.copytree(assets_src, assets_dest)
     else:
         print(f"  Warning: Source directory '{assets_src}' not found. Skipping assets copy.")
-
-    # 4. 复制 'articles' 目录下的所有文章子目录到输出目录的根部
-    # 例如：articles/field_space -> dist/field_space
-    articles_src = "articles"
-    if os.path.exists(articles_src):
-        print(f"  Copying article folders from '{articles_src}' to '{output_dir}'")
-        for item in os.listdir(articles_src):
-            s = os.path.join(articles_src, item) # 源路径，例如 articles/field_space
-            d = os.path.join(output_dir, item)   # 目标路径，例如 dist/field_space
-            if os.path.isdir(s):
-                print(f"    Copying '{s}' to '{d}'")
+        
+    # 4. 复制 'docs' 目录下的所有语言子目录及其内容到输出目录
+    # 例如：docs/zh/determinant -> dist/zh/determinant
+    docs_src = "docs"
+    if os.path.exists(docs_src):
+        print(f"  Copying content from '{docs_src}' to '{output_dir}'")
+        for item in os.listdir(docs_src):
+            s = os.path.join(docs_src, item) # 源路径，例如 docs/zh 或 docs/index.html
+            d = os.path.join(output_dir, item)   # 目标路径，例如 dist/zh 或 dist/index.html
+            
+            if os.path.isdir(s): # 如果是语言目录 (如 zh, en)
+                print(f"    Copying language directory '{s}' to '{d}'")
                 shutil.copytree(s, d)
-            else:
-                print(f"    Skipping non-directory item: '{s}'")
-    else:
-        print(f"  Warning: Source directory '{articles_src}' not found. No articles will be copied.")
+            elif os.path.isfile(s): # 如果是 docs/index.html 文件
+                print(f"    Copying file '{s}' to '{d}'")
+                shutil.copy2(s, d) # copy2 preserves metadata
 
-    # 5. 生成 index.html 文件并写入输出目录
-    print(f"  Generating index.html in '{output_dir}'")
-    index_html_content = get_generated_index_html() # 调用 generate_index.py 中的函数
+    else:
+        print(f"  Warning: Source directory '{docs_src}' not found. No documentation will be copied.")
+
+    # 5. 生成项目根目录的 index.html 文件并写入输出目录
+    # 这个 index.html 应该作为网站的导航页，列出所有可用的语言和文章
+    print(f"  Generating root index.html in '{output_dir}'")
+    # 注意：get_generated_index_html 需要能处理多语言结构
+    index_html_content = get_generated_index_html() 
     with open(os.path.join(output_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(index_html_content)
 
     print("Site build complete successfully!")
 
 if __name__ == "__main__":
-    # 检查是否提供了输出目录参数
     if len(sys.argv) < 2:
         print("Usage: python scripts/build_site.py <output_directory>")
         print("Example: python scripts/build_site.py dist")
-        sys.exit(1) # 退出并返回错误码
+        sys.exit(1)
 
     output_directory = sys.argv[1]
     build_site(output_directory)
